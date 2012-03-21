@@ -19,7 +19,7 @@
 
 (defn problem4 [] 
 	(let [r (range 100 1000)]
-		(last (sort (for [x r y r :when (palindrome? (* x y))] (* x y))))))
+		(reduce max (for [x r y r :when (palindrome? (* x y))] (* x y)))))
 
 (defn problem5 []
 	(let [r (range 2 21)
@@ -28,10 +28,17 @@
 				get-multi (fn [n]
 					(let [a (last (sort-by :count n))] 
 						(Math/pow (:num a) (:count a))))]
-		(reduce * (map #(get-multi (second %)) grouped))))
+		(int (reduce * (map #(get-multi (second %)) grouped)))))
+
+(defn problem6 []
+	(let [r (range 101)
+				sum-squares (reduce + (map square r))
+				square-sums (square (reduce + r))]
+		(int (- square-sums sum-squares))))
 
 ; (println (str "problem1: " (problem1)))
 ; (println (str "problem2: " (problem2)))
 ; (println (str "problem3: " (problem3)))
 ; (println (str "problem4: " (problem4)))
 ; (println (str "problem5: " (problem5)))
+; (println (str "problem6: " (problem6)))

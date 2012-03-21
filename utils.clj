@@ -41,3 +41,9 @@
 (defn count-pieces [arr]
 	{ :num (first arr) 
 		:count (count arr) })
+
+(defn pow [b p]
+	(Math/pow b p))
+
+(defn square [n]
+	(pow n 2))

@@ -1,3 +1,1 @@
-# Thing
-
-just learning some clojure
+Just learning me some clojure.
