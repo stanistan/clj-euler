@@ -38,6 +38,24 @@
             (prime-factors (/ n factor) factor r)
             (prime-factors n (inc factor) factors))))))
 
+(defn prime? [n]
+  (if (<= n 1) false
+      (empty? (take 1 (for [x (range 2 (Math/ceil (Math/sqrt n)))
+        :when (divides? x n)] x)))))
+
+(defn prime-range [start end]
+  (filter prime? (range start end)))
+
+(def prime-gen
+  (let [primes (atom [])]
+    (for [n (iterate inc 2)
+         :when (not-any? #(zero? (rem n %))
+                         (filter #(<= % (Math/sqrt n)) @primes))]
+    (do (swap! primes conj n) n))))
+
+(defn nth-prime [n]
+  (last (take n prime-gen)))
+
 (defn count-pieces [arr]
   { :num (first arr) 
     :count (count arr) })

@@ -30,13 +30,19 @@
             (Math/pow (:num a) (:count a))))]
     (int (reduce * (map #(get-multi (second %)) grouped)))))
 
-(defn problem6 []
+(defn problem6 
+  "Find the difference between the sum of the squares of 
+  the first one hundred natural numbers and the square of the sum."
+  []
   (let [r (range 101)
         sum-squares (reduce + (map square r))
         square-sums (square (reduce + r))]
   (int (- square-sums sum-squares))))
 
-(defn problem7 [])
+(defn problem7 
+  "what is the 10,001st prime number?"
+  []
+  (nth-prime 10001))
 
 ; (println (str "problem1: " (problem1)))
 ; (println (str "problem2: " (problem2)))
@@ -44,3 +50,4 @@
 ; (println (str "problem4: " (problem4)))
 ; (println (str "problem5: " (problem5)))
 ; (println (str "problem6: " (problem6)))
+; (println (str "problem7: " (problem7)))
