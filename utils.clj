@@ -65,3 +65,8 @@
 
 (defn square [n]
   (pow n 2))
+
+(defn pythagorean-triplet? [a b c]
+  (= (square c) (+ (square a) (square b))))
+
+

@@ -44,8 +44,7 @@
   []
   (nth-prime 10001))
 
-(defn problem8
-  []
+(defn problem8 []
   (let [map-to-digits (fn [n] (map #(Character/digit % 10) n))
         nums "73167176531330624919225119674426574742355349194934
               96983520312774506326239578318016984801869478851843
@@ -71,6 +70,14 @@
         digits (map map-to-digits nums)]
   (reduce max (map #(reduce * %) digits))))
 
+(defn problem9 []
+  (reduce max 
+    (for [a (range 1 1000)
+          b (range a 1000)
+          c [(- 1000 a b)]
+          :when (pythagorean-triplet? a b c)]
+      (bigint (* a b c)))))
+
 ; (println (str "problem1: " (problem1)))
 ; (println (str "problem2: " (problem2)))
 ; (println (str "problem3: " (problem3)))
@@ -79,3 +86,4 @@
 ; (println (str "problem6: " (problem6)))
 ; (println (str "problem7: " (problem7)))
 ; (println (str "problem8: " (problem8)))
+; (println (str "problem9: " (problem9)))
