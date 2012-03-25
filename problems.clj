@@ -78,6 +78,9 @@
           :when (pythagorean-triplet? a b c)]
       (bigint (* a b c)))))
 
+(defn problem10 []
+  (apply + (filter prime? (range 1 2000000))))
+
 ; (println (str "problem1: " (problem1)))
 ; (println (str "problem2: " (problem2)))
 ; (println (str "problem3: " (problem3)))
@@ -87,3 +90,4 @@
 ; (println (str "problem7: " (problem7)))
 ; (println (str "problem8: " (problem8)))
 ; (println (str "problem9: " (problem9)))
+; (println (str "problem10: " (problem10)))

@@ -39,9 +39,13 @@
             (prime-factors n (inc factor) factors))))))
 
 (defn prime? [n]
-  (if (<= n 1) false
-      (empty? (take 1 (for [x (range 2 (Math/ceil (Math/sqrt n)))
-        :when (divides? x n)] x)))))
+  (cond (< n 2) false
+        (some #(= n %) [2 3]) true
+        (even? n) false
+        :else (loop [i 3]
+          (if (divides? i n) false
+            (if (> i (Math/sqrt n)) true
+              (recur (+ i 2))))))) 
 
 (defn prime-range [start end]
   (filter prime? (range start end)))
